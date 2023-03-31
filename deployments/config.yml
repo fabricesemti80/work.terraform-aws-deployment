@@ -1,5 +1,3 @@
 ---
-# global config
-# global_var: "set-in-deployments/"
-# unused: true
-# vsphere_server: "inf9002-vmvc.oy.gb.sportingindex.com"
+tags:
+  Terraform: "true"

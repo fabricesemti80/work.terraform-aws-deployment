@@ -1,8 +1,0 @@
----
-# stack level config
-name: "root-vpc-0"
-cidr: "10.0.0.0/24"
-azs:
-  - eu-west-2a
-  - eu-west-2b
-  - eu-west-2c
