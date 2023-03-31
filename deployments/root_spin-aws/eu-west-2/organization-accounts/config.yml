@@ -1,0 +1,38 @@
+---
+name: "spin-infra-networks"
+email: "aws-network+1@sportinggroup.co.uk"
+role: "rolefororg"
+
+# resource "aws_organizations_account" "another-account" {
+#   provider  = aws
+#   name      = "tf_testaccount-another"
+#   email     = "dpewsey@sportingsolutions.com"
+#   role_name = "rolefororg"
+
+#   # There is no AWS Organizations API for reading role_name
+#   lifecycle {
+#     ignore_changes = [role_name]
+#   }
+# }
+# resource "aws_organizations_account" "anotherone-account" {
+#   provider  = aws
+#   name      = "tf_testaccount-anotherone"
+#   email     = "aws-anotherone@sportingsolutions.com"
+#   role_name = "rolefororg"
+
+#   # There is no AWS Organizations API for reading role_name
+#   lifecycle {
+#     ignore_changes = [role_name]
+#   }
+# }
+# resource "aws_organizations_account" "account" {
+#   provider  = aws
+#   name      = "tf_testaccount"
+#   email     = "jgarcia@sportingsolutions.com"
+#   role_name = "rolefororg"
+
+#   # There is no AWS Organizations API for reading role_name
+#   lifecycle {
+#     ignore_changes = [role_name]
+#   }
+# }
