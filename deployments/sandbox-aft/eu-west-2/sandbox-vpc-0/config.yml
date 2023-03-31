@@ -1,7 +1,7 @@
 ---
 # stack level config
-name: "my-vpc"
-cidr: "10.0.0.0/24"
+name: "sandbox-vpc-0"
+cidr: "10.1.0.0/24"
 azs:
   - eu-west-2a
   - eu-west-2b
