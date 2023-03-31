@@ -1,7 +1,7 @@
 # Set account-wide variables. These are automatically pulled in to configure the remote state bucket in the root
 # terragrunt.hcl configuration.
 locals {
-  account_name   = "learn-aft"
+  account_name   = "spin-aws"
   aws_account_id = "288826279134" # TODO: replace me with your AWS account ID!
   aws_profile    = "prod"
   aws_arn        = "arn:aws:iam::288826279134:role/AzureAD-AWS-Admins" # TODO: replace me with your AWS role ARN!
@@ -32,3 +32,6 @@ locals {
 |  Spin AWS                  |  288826279134  |
 +----------------------------+----------------+
 */
+
+#? https://sportingsolutions.atlassian.net/wiki/spaces/IO/pages/3618832394/AWS+Role+Assumption+and+Trust#Adding-accounts%2Froles
+#? aws iam list-roles | grep -B 10 -A 10 --color arn:aws:iam::288826279134:root # (do this under the relevant account!)
