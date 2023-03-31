@@ -2,9 +2,9 @@
 # terragrunt.hcl configuration.
 locals {
   account_name   = "learn-aft"
-  aws_account_id = "610770342844" # TODO: replace me with your AWS account ID!
+  aws_account_id = "288826279134" # TODO: replace me with your AWS account ID!
   aws_profile    = "non-prod"
-  aws_arn        = "arn:aws:sts::288826279134:assumed-role/AzureAD-AWS-Admins/fsemti@sportinggroup.co.uk"
+  aws_arn        = "arn:aws:iam::288826279134:role/AzureAD-AWS-Admins" # TODO: replace me with your AWS role ARN!
 }
 
 /*
