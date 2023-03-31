@@ -3,7 +3,7 @@
 locals {
   account_name   = "learn-aft"
   aws_account_id = "288826279134" # TODO: replace me with your AWS account ID!
-  aws_profile    = "non-prod"
+  aws_profile    = "prod"
   aws_arn        = "arn:aws:iam::288826279134:role/AzureAD-AWS-Admins" # TODO: replace me with your AWS role ARN!
 }
 
