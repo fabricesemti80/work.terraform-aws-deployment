@@ -1,6 +1,6 @@
 ---
 # stack level config
-name: "vpc-ROOT-spin-aws-0"
+name: "vpc-root-spin-aws-0"
 cidr: "10.0.0.0/16"
 azs:
   - eu-west-2a
