@@ -1,0 +1,14 @@
+---
+org_root_id: "r-uo2v"
+org_units:
+  units:
+      - name: "Spin-Workloads"
+        key: "spin-workloads-aft-ou"
+        accounts:
+          - name: "Spin-Aft-Management"
+            key: "spin-aft-mgmt-account"
+            email: "aws-spin-aft-mgmt@sportinggroup.co.uk"
+            allow_iam_users_access_to_billing: false
+        units:
+          - name: "Dev"
+            key: "spin-dev-aft-ou"
