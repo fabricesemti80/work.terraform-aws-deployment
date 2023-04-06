@@ -1,0 +1,47 @@
+---
+org_root_id: "r-uo2v"
+org_units:
+
+  units:
+      - name: "Sandboxes"
+        key: "sandboxes-ou"
+
+        accounts:
+
+          #! for imports, use the "key" not the "name!"
+
+          # terragrunt import aws_organizations_account.account[\"cristian-testing-account\"] 616635090700
+          - name: "cristian-testing"
+            key: "cristian-testing-account"
+            email: "cavasilescu@sportingindex.com"
+            allow_iam_users_access_to_billing: false
+
+          # terragrunt import aws_organizations_account.account[\"spin-fdj-proto-account\"] 961914026780
+          - name: "spin-fdj-proto"
+            key: "spin-fdj-proto-account"
+            email: "aws-spin-fdj-proto@sportingsolutions.com"
+            allow_iam_users_access_to_billing: false
+
+          # terragrunt import aws_organizations_account.account[\"spinfo-abp-testing-account\"] 442707603723
+          - name: "spinfo-abp-testing"
+            key: "spinfo-abp-testing-account"
+            email: "ibisonni@sportingsolutions.com"
+            allow_iam_users_access_to_billing: false
+
+          # terragrunt import aws_organizations_account.account[\"tf_testaccount-account\"] 410852369909
+          - name: "tf_testaccount"
+            key: "tf_testaccount-account"
+            email: "jgarcia@sportingsolutions.com"
+            allow_iam_users_access_to_billing: false
+
+          # terragrunt import aws_organizations_account.account[\"tf_testaccount-another-account\"] 872086963302
+          - name: "tf_testaccount-another"
+            key: "tf_testaccount-another-account"
+            email: "dpewsey@sportingsolutions.com"
+            allow_iam_users_access_to_billing: false
+
+          # terragrunt import aws_organizations_account.account[\"tf_testaccount-anotherone-account\"] 966228174658
+          - name: "tf_testaccount-anotherone"
+            key: "tf_testaccount-anotherone-account"
+            email: "aws-anotherone@sportingsolutions.com"
+            allow_iam_users_access_to_billing: false
