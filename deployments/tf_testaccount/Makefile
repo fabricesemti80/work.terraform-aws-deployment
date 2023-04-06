@@ -4,7 +4,7 @@ default: plan-all
 
 .PHONY: clean
 clean:
-	find . -type d -name '.terragrunt-cache' -exec rm -rf {} +
+	find . -type d -name '**.terragrunt-cache' -exec rm -rf {} +
 
 #& run all
 .PHONY: plan-all
