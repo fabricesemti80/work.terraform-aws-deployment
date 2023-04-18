@@ -1,0 +1,14 @@
+---
+name: london_prod_inspection
+cidr: "10.31.3.0/24"
+azs:
+  - eu-west-2a
+  - eu-west-2b
+  - eu-west-2c
+private_subnets:
+  - 10.31.3.0/28
+  - 10.31.3.16/28
+  - 10.31.3.32/28
+tags:
+  Terraform: "true"
+  Environment: "prod"
