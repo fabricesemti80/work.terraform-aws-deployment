@@ -8,6 +8,8 @@ azs:
 private_subnets:
   - 10.31.3.0/28
   - 10.31.3.16/28
+  - 10.31.3.48/28
+public_subnets:
   - 10.31.3.32/28
 tags:
   Terraform: "true"

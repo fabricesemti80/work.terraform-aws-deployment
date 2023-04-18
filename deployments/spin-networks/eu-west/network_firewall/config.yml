@@ -1,0 +1,30 @@
+---
+nfw_name: "prodfwinspection"
+nrg_capacity: 50
+nrg_desc: "Permits http traffic from source"
+nrg_name: "prodfwinspection"
+nrg_type: "STATEFUL"
+nrg_action: "PASS"
+nrg_destination_range: "10.32.0.0/24"
+nrg_destination_port: "443"
+nrg_protocol: "HTTP"
+nrg_direction: "ANY"
+nrg_source_port: "ANY"
+nrg_source_range: "10.64.0.0/13"
+nrg_keyword: "sid"
+nrg_settings:
+ - "1"
+tags:
+  Name: "SPIN network firewalls"
+  Environment: "prod"
+  Created_By: "Terraform"
+nrp_name: "prod-fw-inspection-policy"
+nrp_stateless_default_actions:
+  - "aws:drop"
+nrp_stateless_fragment_default_actions:
+  - "aws:drop"
+nfv_subnet_mapping: "subnet-010ecf023ce7abd53"
+
+  # "subnet-010ecf023ce7abd53",
+  # "subnet-015ab1ffef2a0ff6e",
+  # "subnet-0d5cd36827cba716f",
