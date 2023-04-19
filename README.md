@@ -9,17 +9,55 @@ https://thirstydeveloper.io/series/tf-skeleton
 
 ## Prerequisites
 
-This project uses:
+Mandatory tools:
 
-* [tfenv](https://github.com/tfutils/tfenv) for managing terraform versions
-* [tgenv](https://github.com/cunymatthieu/tgenv) for managing terragrunt versions
-* [pre-commit](https://pre-commit.com/) for running syntax, semantic, and style checks on `git commit`
+- [Terragrunt](https://terragrunt.gruntwork.io/) - _before installing please see optional tools!_
+- [Terraform](https://www.terraform.io/) - _before installing please see optional tools!_
+- [AWS Azure Login](https://www.npmjs.com/package/aws-azure-login)
+  - *see [guide](https://sportingsolutions.atlassian.net/wiki/spaces/IO/pages/1014202508/AWS+CLI+Access+with+Azure+federated+login+on+AWS) also*
+  - as it is an npm package, it requires [nodejs](https://nodejs.org/en/download) - _before installing please see optional tools!_
 
-After installing those tools run `tfenv install` and `tgenv install` from the
-clone of this repository to install the configured versions of terraform and
-terragrunt. Then, run `pre-commit install` to install the pre-commit hooks.
+Optional tools:
 
-You will also need to install and configure / login to [aws-azure-login](https://sportingsolutions.atlassian.net/wiki/spaces/IO/pages/1014202508/AWS+CLI+Access+with+Azure+federated+login+on+AWS), as our AWS is using SAML2
+  Generally I like to install most `node` / `terraform` / and `terragrunt` with the "** version managers"; as these allow having different versions installed.
+  I also like to use Homebrew for installations on `Linux` systems (use `brew`  on Mac for similar results)
+
+### Setup (for Unix systems):
+
+  1. Install Homebrew (if Linux) - <https://brew.sh/> - follow ***all*** instructions, and make sure it loads to your shell
+
+  2. Install packages with Homebrew `brew install tfenv tgenv nvm` / or install them as per their respective websites
+
+  * [tfenv](https://github.com/tfutils/tfenv) for managing terraform versions
+  * [tgenv](https://github.com/cunymatthieu/tgenv) for managing terragrunt versions
+  * [nvm](https://github.com/nvm-sh/nvm)
+
+  3. After installing those tools run `tfenv install` and `tgenv install` from the clone of this repository to install the configured versions of Terraform and Terragrunt.
+
+  4. We also need `NodeJS`, installed with [nvm](https://heynode.com/tutorial/install-nodejs-locally-nvm/)
+
+  5. Once we have `Node`, we can then install `aws-azure-login`
+
+  6. Finally a few optional packages I am recommending - ideally with `brew install pre-commit awscli terraform-docs direnv` :
+
+  * [direnv](https://direnv.net/) - to load secrets as env vars
+  * [pre-commit](https://pre-commit.com/) - for running syntax, semantic, and style checks on `git commit`
+  * [terraform-docs](https://terraform-docs.io/) - needed for `pre-commit`
+  * [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - worths having it since you are working with AWS, need to check resources from time to time
+
+### Setup (for Windows systems):
+
+You may be use some of the tools listed, and you can achieve some level of workability, but I really suggest *not* using Windows for this project. But the bare minimum you will need on Win:
+
+1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) - this is default present on Linux, on Win - not so much
+
+2. `Terraform`
+
+3. `Terragrunt`
+
+4. `Node` -> for `aws-azure-login`
+
+The rest of the tools I do not think you can find in Win. But you are welcome to try; I would also recommend to try to use `chocolatey` to install these, as much as you can.
 
 ## Usage
 
@@ -34,201 +72,8 @@ terragrunt `*-all` commands can be run from the repository root, or the
 * Run `terragrunt plan-all` from `deployments/app/dev` to generate plans for
   all `app/dev` deployments.
 
-For additional guidance, see the companion blog series:
+## Closing notes
+
+For additional guidance / source material, see the companion blog series:
 
 https://thirstydeveloper.io/series/tf-skeleton
-
-## Sample full usage
-
-```sh
-
-$ tfenv --version
-tfenv 3.0.0
-
-$ tgenv --version
-tgenv 0.1.0
-
-$ git clone git@github.com:sportingsolutions/SS.Terraform.INFRA.AWS.git
-Cloning into 'SS.Terraform.INFRA.AWS'...
-remote: Enumerating objects: 40, done.
-remote: Counting objects: 100% (40/40), done.
-remote: Compressing objects: 100% (30/30), done.
-remote: Total 40 (delta 2), reused 40 (delta 2), pack-reused 0
-Receiving objects: 100% (40/40), 7.75 KiB | 7.75 MiB/s, done.
-Resolving deltas: 100% (2/2), done.
-
-$ cd SS.Terraform.INFRA.AWS
-
-$ cat .terraform-version
-1.3.9
-
-$ cat .terragrunt-version
-0.43.2
-
-$ tfenv install
-Terraform v1.3.9 is already installed
-
-$ tgenv install
-Terragrunt v0.43.2 is already installed
-
-$ pre-commit --version
-pre-commit 3.1.1
-
-$ pre-commit install
-pre-commit installed at .git/hooks/pre-commit
-
-$ aws-azure-login
-(node:26999) NOTE: We are formalizing our plans to enter AWS SDK for JavaScript (v2) into maintenance mode in 2023.
-
-Please migrate your code to use AWS SDK for JavaScript (v3).
-For more information, check the migration guide at https://a.co/7PzMCcy
-Logging in with profile 'default'...
-Using AWS SAML endpoint https://signin.aws.amazon.com/saml
-Assuming role arn:aws:iam::288826279134:role/AzureAD-AWS-Admins
-
-$ terragrunt run-all plan
-INFO[0000] The stack at /home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS will be processed in the following order for command plan:
-Group 1
-- Module /home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/oy/prod/test-stack
-- Module /home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/oy/stage/test-stack
-
-WARN[0000] No double-slash (//) found in source URL /home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/../modules/stacks/oy/test-stack. Relative paths in downloaded Terraform code may not work.  prefix=[/home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/oy/prod/test-stack]
-WARN[0000] No double-slash (//) found in source URL /home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/../modules/stacks/oy/test-stack. Relative paths in downloaded Terraform code may not work.  prefix=[/home/fabrice/projects/terraform/SS.Terraform.INFRA.AWS/deployments/oy/stage/test-stack]
-
-Initializing the backend...
-
-Initializing the backend...
-
-Successfully configured the backend "s3"! Terraform will automatically
-use this backend unless the backend configuration changes.
-
-Successfully configured the backend "s3"! Terraform will automatically
-use this backend unless the backend configuration changes.
-
-Initializing provider plugins...
-- Reusing previous version of hashicorp/random from the dependency lock file
-
-Initializing provider plugins...
-- Reusing previous version of hashicorp/random from the dependency lock file
-- Installing hashicorp/random v3.0.1...
-- Installing hashicorp/random v3.0.1...
-- Installed hashicorp/random v3.0.1 (signed by HashiCorp)
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-- Installed hashicorp/random v3.0.1 (signed by HashiCorp)
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # random_pet.pet will be created
-  + resource "random_pet" "pet" {
-      + id        = (known after apply)
-      + length    = 2
-      + separator = "-"
-    }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-
-Changes to Outputs:
-  + env_var    = "set in deployments/app/prod"
-  + global_var = "overridden in deployments/app"
-  + layer_var  = "unset"
-  + pet        = (known after apply)
-  + stack_var  = "set in deployments/app/prod/test-stack/"
-  + tier_var   = "set in deployments/app/"
-
-─────────────────────────────────────────────────────────────────────────────
-
-Note: You didn't use the -out option to save this plan, so Terraform can't
-guarantee to take exactly these actions if you run "terraform apply" now.
-
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # random_pet.pet will be created
-  + resource "random_pet" "pet" {
-      + id        = (known after apply)
-      + length    = 2
-      + separator = "-"
-    }
-
-Plan: 1 to add, 0 to change, 0 to destroy.
-
-Changes to Outputs:
-  + env_var    = "set in deployments/app/stage"
-  + global_var = "overridden in deployments/app"
-  + layer_var  = "unset"
-  + pet        = (known after apply)
-  + stack_var  = "set in deployments/app/stage/test-stack/"
-  + tier_var   = "set in deployments/app/"
-
-─────────────────────────────────────────────────────────────────────────────
-
-Note: You didn't use the -out option to save this plan, so Terraform can't
-guarantee to take exactly these actions if you run "terraform apply" now.
-INFO[0003]
-Initializing the backend...
-
-Successfully configured the backend "s3"! Terraform will automatically
-use this backend unless the backend configuration changes.
-
-Initializing provider plugins...
-- Reusing previous version of hashicorp/random from the dependency lock file
-- Installing hashicorp/random v3.0.1...
-- Installed hashicorp/random v3.0.1 (signed by HashiCorp)
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-INFO[0003]
-Initializing the backend...
-
-Successfully configured the backend "s3"! Terraform will automatically
-use this backend unless the backend configuration changes.
-
-Initializing provider plugins...
-- Reusing previous version of hashicorp/random from the dependency lock file
-- Installing hashicorp/random v3.0.1...
-- Installed hashicorp/random v3.0.1 (signed by HashiCorp)
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-
-```
