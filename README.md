@@ -30,13 +30,13 @@ Optional tools:
 
   * [tfenv](https://github.com/tfutils/tfenv) for managing terraform versions
   * [tgenv](https://github.com/cunymatthieu/tgenv) for managing terragrunt versions
-  * [nvm](https://github.com/nvm-sh/nvm)
+  * [nvm](https://github.com/nvm-sh/nvm) for managing `NodeJS` / `NPM` versions
 
   3. After installing those tools run `tfenv install` and `tgenv install` from the clone of this repository to install the configured versions of Terraform and Terragrunt.
 
   4. We also need `NodeJS`, installed with [nvm](https://heynode.com/tutorial/install-nodejs-locally-nvm/)
 
-  5. Once we have `Node`, we can then install `aws-azure-login`
+  5. Once we have `Node`, we can then install `aws-azure-login` with `npm` (which is bundled with `NodeJS`)
 
   6. Finally a few optional packages I am recommending - ideally with `brew install pre-commit awscli terraform-docs direnv` :
 
